@@ -9,6 +9,6 @@ class NineoneSeedsSpider(scrapy.Spider):
         selector = Selector(response)
         content_list = selector.xpath("//div[@class='listchannel']")
         for content in content_list:
-            content_url = content.xpath("a/@href").extract()
+            content_url = content.xpath("a[@target='blank']/@href").extract()
             title = content.xpath("a/@title").extract()
             print content_url, title
